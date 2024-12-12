@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // MongoDB connection
 async function connectToDatabase() {
   try {
-    await mongoose.connect('mongodb://localhost:27017/technical-task-backend');
+    await mongoose.connect(process.env.MONGO_URL);
     console.log('Successfully connected to the database');
   } catch (error) {
     console.error('Error connecting to the database', error);
