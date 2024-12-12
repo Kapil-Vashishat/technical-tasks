@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user');
+const dotenv = require('dotenv');
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
 
