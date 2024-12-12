@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user');
+const foodRoutes = require('./routes/food');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -11,6 +13,8 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+
+app.use(cors());
 
 // MongoDB connection
 async function connectToDatabase() {
@@ -26,6 +30,8 @@ connectToDatabase();
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/food', foodRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
